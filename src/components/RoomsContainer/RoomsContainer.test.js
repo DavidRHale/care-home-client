@@ -6,7 +6,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import axios from 'axios';
 
 import RoomsContainer from './RoomsContainer';
-import RoomsList from '../RoomsList/RoomsList';
 
 Enzyme.configure({ adapter: new Adapter() });
 
