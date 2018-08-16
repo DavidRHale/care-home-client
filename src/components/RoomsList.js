@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 
 const renderRooms = rooms => (
   rooms.map(room => (
-    <div key={room.id}>
-      Name: {room.name}
-    </div>
+    <li className="collection-item">
+      {room.name}
+    </li>
   ))
 );
 
 const RoomsList = ({ rooms }) => (
-  <div>
-    {rooms && renderRooms(rooms)}
+  <div className="row">
+    <ul className="collection col s8 offset-s2">
+      {rooms && renderRooms(rooms)}
+    </ul>
   </div>
 );
 

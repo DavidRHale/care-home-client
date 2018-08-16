@@ -23,7 +23,9 @@ export default class RoomsContainer extends Component {
 
     return (
       <div>
-        <h2>Rooms</h2>
+        <div className="row">
+          <h2 className="col s8 offset-s2">Rooms</h2>
+        </div>
         {rooms.length > 0 ? <RoomsList rooms={rooms} /> : 'No rooms'}
       </div>
     );
