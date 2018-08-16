@@ -8,7 +8,7 @@ import RoomsList from './RoomsList';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Rooms Container', () => {
+describe('Rooms List', () => {
   let component;
   const rooms = [
     { id: 1, name: '1F1', resident_id: 1 },
