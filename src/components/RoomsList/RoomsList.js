@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const renderRooms = rooms => (
   rooms.map(room => (
-    <li className="collection-item">
+    <li key={room.id} className="collection-item">
       {room.name}
     </li>
   ))

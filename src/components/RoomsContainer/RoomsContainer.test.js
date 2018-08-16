@@ -37,11 +37,6 @@ describe('Rooms Container', () => {
     expect(header.text()).toEqual('Rooms');
   });
 
-  it('should have a header', () => {
-    const header = component.find('h2');
-    expect(header.text()).toEqual('Rooms');
-  });
-
   it('should render a RoomsList when rooms are fetched', () => {
     const roomsList = component.find('RoomsList');
     expect(roomsList.props().rooms).toEqual(rooms);
