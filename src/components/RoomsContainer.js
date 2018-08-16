@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import RoomsList from './RoomsList';
+
 export default class RoomsContainer extends Component {
   constructor() {
     super();
@@ -22,7 +24,7 @@ export default class RoomsContainer extends Component {
     return (
       <div>
         <h2>Rooms</h2>
-        {rooms.length > 0 ? 'Rooms found' : 'No rooms'}
+        {rooms.length > 0 ? <RoomsList rooms={rooms} /> : 'No rooms'}
       </div>
     );
   }
