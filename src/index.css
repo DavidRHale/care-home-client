@@ -12,6 +12,10 @@ nav .brand-logo {
   padding-left: 10px;
 }
 
+.header {
+  margin-left: 0 !important;
+}
+
 .card {
   max-width: 350px;
 }

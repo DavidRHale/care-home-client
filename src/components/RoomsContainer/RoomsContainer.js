@@ -36,8 +36,11 @@ export default class RoomsContainer extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <h2 className="col s8 offset-s2">Rooms</h2>
+        <div className="row valign-wrapper">
+          <div className="col offset-s1 offset-m2">
+            <button className="btn">+ Add</button>
+          </div>
+          <h2 className="col s1 header">Rooms</h2>
         </div>
         {this.renderRoomsList()}
       </div>

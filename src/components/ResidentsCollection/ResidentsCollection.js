@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 const renderResidents = residents => (
   residents.map(resident => (
     <div className="col s12 m4 offset-m2 l5 offset-l1" key={resident.id}>
-      <div className="card">
+      <div className="card hoverable">
         <div className="card-content">
-          <span className="card-title">Name: {resident.first_name} {resident.last_name}</span>
+          <span className="card-title">{resident.first_name} {resident.last_name}</span>
+          <hr />
+          <p>Room: {resident.room}</p>
           <p>DOB: {resident.dob}</p>
           <p>Favourite Food: {resident.favourite_food}</p>
         </div>
