@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="container">
+export default () => (
+  <div className="container">
+    <BrowserRouter>
+      <div>
         <Navigation />
-        <h1>Care Home</h1>
+        <Route exact path="/" component={() => <h1>Care Home</h1>} />
       </div>
-    );
-  }
-}
-
-export default App;
+    </BrowserRouter>
+  </div>
+);
