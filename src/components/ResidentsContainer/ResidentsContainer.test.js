@@ -37,19 +37,19 @@ describe('Residents Container', () => {
     expect(header.text()).toEqual('Residents');
   });
 
-  it('should render residents count when rooms are fetched', () => {
-    const count = component.find('p');
-    expect(count.text()).toEqual('2');
+  it('should render a residents collection when rooms are fetched', () => {
+    const residentsCollection = component.find('ResidentsCollection');
+    expect(residentsCollection.props().residents).toEqual(residents);
   });
 
-  // it('should render text when no rooms are fetched', () => {
-  //   axios.get.mockImplementationOnce(() => Promise.resolve({ data: rooms }));
-  //   component = shallow(<ResidentsContainer />);
+  it('should render text when no residents are fetched', () => {
+    axios.get.mockImplementationOnce(() => Promise.resolve({ data: [] }));
+    component = shallow(<ResidentsContainer />);
 
-  //   const roomsList = component.find('RoomsList');
-  //   expect(roomsList.exists()).toEqual(false);
+    const residentsCollection = component.find('ResidentsCollection');
+    expect(residentsCollection.exists()).toEqual(false);
 
-  //   const noRoomsText = component.find('p');
-  //   expect(noRoomsText.text()).toEqual('You don\'t seem to have any rooms yet. Add one to get started!');
-  // });
+    const noRoomsText = component.find('p');
+    expect(noRoomsText.text()).toEqual('You don\'t seem to have any residents yet. Add one to get started!');
+  });
 });

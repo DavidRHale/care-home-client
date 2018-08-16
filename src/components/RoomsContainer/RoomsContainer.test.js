@@ -39,11 +39,12 @@ describe('Rooms Container', () => {
 
   it('should render a RoomsList when rooms are fetched', () => {
     const roomsList = component.find('RoomsList');
+    expect(roomsList.exists()).toEqual(true);
     expect(roomsList.props().rooms).toEqual(rooms);
   });
 
   it('should render text when no rooms are fetched', () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ data: rooms }));
+    axios.get.mockImplementationOnce(() => Promise.resolve({ data: [] }));
     component = shallow(<RoomsContainer />);
 
     const roomsList = component.find('RoomsList');

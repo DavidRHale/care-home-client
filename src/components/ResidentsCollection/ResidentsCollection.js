@@ -1,0 +1,36 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const renderResidents = residents => (
+  residents.map(resident => (
+    <div className="col s12 m4 offset-m2 l5 offset-l1" key={resident.id}>
+      <div className="card">
+        <div className="card-content">
+          <span className="card-title">Name: {resident.first_name} {resident.last_name}</span>
+          <p>DOB: {resident.dob}</p>
+          <p>Favourite Food: {resident.favourite_food}</p>
+        </div>
+      </div>
+    </div>
+  ))
+);
+
+const ResidentsCollection = ({ residents }) => (
+  <div className="row">
+    {renderResidents(residents)}
+  </div>
+);
+
+ResidentsCollection.propTypes = {
+  residents: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      first_name: PropTypes.string.isRequired,
+      last_name: PropTypes.string.isRequired,
+      dob: PropTypes.string.isRequired,
+      favourite_food: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
+
+export default ResidentsCollection;

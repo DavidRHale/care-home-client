@@ -11,3 +11,11 @@ nav {
 nav .brand-logo {
   padding-left: 10px;
 }
+
+.card {
+  max-width: 350px;
+}
+
+.card p {
+  font-size: 18px;
+}
