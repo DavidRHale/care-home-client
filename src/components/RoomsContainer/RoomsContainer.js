@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import RoomsList from '../RoomsList/RoomsList';
+import RoomsNew from '../RoomsNew/RoomsNew';
 
 export default class RoomsContainer extends Component {
   constructor() {
@@ -38,10 +39,13 @@ export default class RoomsContainer extends Component {
       <div>
         <div className="row valign-wrapper">
           <div className="col offset-s1 offset-m2">
-            <button className="btn">+ Add</button>
+            <button className="btn" onClick={() => this.setState({ showForm: true })}>
+              + Add
+            </button>
           </div>
           <h2 className="col s1 header">Rooms</h2>
         </div>
+        <RoomsNew submitRoom={() => { }} />
         {this.renderRoomsList()}
       </div>
     );

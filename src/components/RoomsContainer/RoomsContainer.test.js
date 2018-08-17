@@ -53,4 +53,9 @@ describe('Rooms Container', () => {
     const noRoomsText = component.find('p');
     expect(noRoomsText.text()).toEqual('You don\'t seem to have any rooms yet. Add one to get started!');
   });
+
+  it('should have a form to add a room', () => {
+    const form = component.find('RoomsNew');
+    expect(form.exists()).toEqual(true);
+  });
 });
