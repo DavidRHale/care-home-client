@@ -14,8 +14,9 @@ class RoomsNew extends Component {
 
   onSubmit(event) {
     event.preventDefault();
+    const { roomName } = this.state;
     const { submitRoom } = this.props;
-    submitRoom();
+    submitRoom(roomName);
     this.setState({ roomName: '' });
   }
 

@@ -13,6 +13,8 @@ export default class RoomsContainer extends Component {
     this.state = {
       rooms: [],
     };
+
+    this.submitRoom = this.submitRoom.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +26,16 @@ export default class RoomsContainer extends Component {
       .get('http://localhost:3001/rooms')
       .then(res => this.setState({ rooms: res.data }))
       .catch(() => { /* log or do something sensible */ });
+  }
+
+  submitRoom(roomName) {
+    const { rooms } = this.state;
+    const room = { name: roomName };
+
+    axios
+      .post('http://localhost:3001/rooms', room)
+      .then(res => this.setState({ rooms: [...rooms, res.data] }))
+      .catch(err => console.log('err', err.response.data.message));
   }
 
   renderRoomsList() {
@@ -39,13 +51,13 @@ export default class RoomsContainer extends Component {
       <div>
         <div className="row valign-wrapper">
           <div className="col offset-s1 offset-m2">
-            <button className="btn" onClick={() => this.setState({ showForm: true })}>
+            <button className="btn" onClick={() => { }}>
               + Add
             </button>
           </div>
           <h2 className="col s1 header">Rooms</h2>
         </div>
-        <RoomsNew submitRoom={() => { }} />
+        <RoomsNew submitRoom={this.submitRoom} />
         {this.renderRoomsList()}
       </div>
     );
