@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const renderRooms = rooms => (
-  rooms.map(room => (
-    <li key={room.id} className="collection-item">
-      {room.name}
-    </li>
-  ))
+  rooms.map((room) => {
+    const residentName = room.resident
+      ? `${room.resident.first_name} ${room.resident.last_name}`
+      : 'Empty';
+
+    return (
+      <li key={room.id} className="collection-item row">
+        <div className="col s6 bold"><b>Room: {room.name}</b></div><div className="col s6">Resident: {residentName}</div>
+      </li>
+    );
+  })
 );
 
 const RoomsList = ({ rooms }) => (
@@ -22,7 +28,14 @@ RoomsList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      resident_id: PropTypes.number.isRequired,
+      resident_id: PropTypes.number,
+      resident: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        first_name: PropTypes.string.isRequired,
+        last_name: PropTypes.string.isRequired,
+        dob: PropTypes.string.isRequired,
+        favourite_food: PropTypes.string.isRequired,
+      }),
     }),
   ).isRequired,
 };

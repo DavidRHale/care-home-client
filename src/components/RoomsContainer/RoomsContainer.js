@@ -12,6 +12,7 @@ export default class RoomsContainer extends Component {
 
     this.state = {
       rooms: [],
+      residents: [],
     };
 
     this.submitRoom = this.submitRoom.bind(this);
@@ -19,6 +20,7 @@ export default class RoomsContainer extends Component {
 
   componentDidMount() {
     this.fetchRooms();
+    this.fetchResidents();
   }
 
   fetchRooms() {
@@ -28,9 +30,16 @@ export default class RoomsContainer extends Component {
       .catch(() => { /* log or do something sensible */ });
   }
 
-  submitRoom(roomName) {
+  fetchResidents() {
+    axios
+      .get('http://localhost:3001/residents')
+      .then(res => this.setState({ residents: res.data }))
+      .catch(() => { /* log or do something sensible */ });
+  }
+
+  submitRoom(name, residentId) {
     const { rooms } = this.state;
-    const room = { name: roomName };
+    const room = { name, resident_id: residentId };
 
     axios
       .post('http://localhost:3001/rooms', room)
@@ -47,6 +56,8 @@ export default class RoomsContainer extends Component {
   }
 
   render() {
+    const { residents } = this.state;
+
     return (
       <div>
         <div className="row valign-wrapper">
@@ -57,7 +68,7 @@ export default class RoomsContainer extends Component {
           </div>
           <h2 className="col s1 header">Rooms</h2>
         </div>
-        <RoomsNew submitRoom={this.submitRoom} />
+        <RoomsNew submitRoom={this.submitRoom} residents={residents} />
         {this.renderRoomsList()}
       </div>
     );

@@ -35,9 +35,20 @@ describe('Rooms New', () => {
   });
 
   it('should gave a label for room name', () => {
-    const label = component.find('label');
+    const label = component.find('label').first();
     expect(label.exists()).toEqual(true);
     expect(label.text()).toEqual('Room Name:');
+  });
+
+  it('should have a select', () => {
+    const select = component.find('select');
+    expect(select.exists()).toEqual(true);
+  });
+
+  it('should gave a label for residents dropdown', () => {
+    const label = component.find('label').at(1);
+    expect(label.exists()).toEqual(true);
+    expect(label.text()).toEqual('Resident:');
   });
 
   it('should have a submit button', () => {
