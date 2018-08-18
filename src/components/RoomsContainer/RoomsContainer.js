@@ -14,6 +14,7 @@ export default class RoomsContainer extends Component {
       rooms: [],
       residents: [],
       hideForm: true,
+      editIndex: undefined,
     };
 
     this.submitRoom = this.submitRoom.bind(this);
@@ -49,11 +50,18 @@ export default class RoomsContainer extends Component {
   }
 
   renderRoomsList() {
-    const { rooms } = this.state;
+    const { rooms, editIndex } = this.state;
 
-    return rooms.length > 0
-      ? <RoomsList rooms={rooms} />
-      : <p>You don't seem to have any rooms yet. Add one to get started!</p>;
+    if (rooms.length > 0) {
+      return (
+        <RoomsList
+          rooms={rooms}
+          onEditClick={itemIndex => this.setState({ editIndex: itemIndex })}
+          editIndex={editIndex}
+        />
+      );
+    }
+    return <p>You don't seem to have any rooms yet. Add one to get started!</p>;
   }
 
   render() {

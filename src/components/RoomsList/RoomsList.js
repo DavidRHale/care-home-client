@@ -1,27 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const renderRooms = rooms => (
-  rooms.map((room) => {
-    const residentName = room.resident
-      ? `${room.resident.first_name} ${room.resident.last_name}`
-      : 'Empty';
+import RoomsListItem from '../RoomsListItem/RoomsListItem';
+
+const RoomsList = ({ rooms, onEditClick, editIndex }) => {
+  const renderRooms = () => rooms.map((room, index) => {
+    if (index === editIndex) {
+      return <li className="collection-item row">Editing</li>;
+    }
 
     return (
-      <li key={room.id} className="collection-item row">
-        <div className="col s6 bold"><b>Room: {room.name}</b></div><div className="col s6">Resident: {residentName}</div>
-      </li>
+      <RoomsListItem
+        room={room}
+        key={room.id}
+        itemIndex={index}
+        onEditClick={onEditClick}
+      />
     );
-  })
-);
+  });
 
-const RoomsList = ({ rooms }) => (
-  <div className="row">
-    <ul className="collection col s8 offset-s2">
-      {rooms && renderRooms(rooms)}
-    </ul>
-  </div>
-);
+  return (
+    <div className="row">
+      <ul className="collection col s8 offset-s2">
+        {rooms && renderRooms(rooms)}
+      </ul>
+    </div>
+  );
+};
 
 RoomsList.propTypes = {
   rooms: PropTypes.arrayOf(
@@ -38,6 +43,12 @@ RoomsList.propTypes = {
       }),
     }),
   ).isRequired,
+  onEditClick: PropTypes.func.isRequired,
+  editIndex: PropTypes.number,
+};
+
+RoomsList.defaultProps = {
+  editIndex: undefined,
 };
 
 export default RoomsList;

@@ -20,7 +20,7 @@ describe('Rooms List', () => {
   ];
 
   beforeEach(() => {
-    component = shallow(<RoomsList rooms={rooms} />);
+    component = shallow(<RoomsList rooms={rooms} onEditClick={() => { }} />);
   });
 
 
@@ -37,8 +37,8 @@ describe('Rooms List', () => {
     expect(ul.exists()).toEqual(true);
   });
 
-  it('should render an li for each room passed as props', () => {
-    const li = component.find('li');
-    expect(li.length).toEqual(rooms.length);
+  it('should render a RoomsListItem for each room passed as props', () => {
+    const rli = component.find('RoomsListItem');
+    expect(rli.length).toEqual(rooms.length);
   });
 });
