@@ -38,7 +38,7 @@ describe('Residents Container', () => {
   });
 
   it('should have a link to the add resident form', () => {
-    const link = component.find('link');
+    const link = component.find('Link');
     expect(link.exists()).toEqual(true);
   });
 

@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
-import RoomsContainer from './components/RoomsContainer/RoomsContainer';
-import ResidentsContainer from './components/ResidentsContainer/ResidentsContainer';
-import ResidentsEdit from './components/ResidentsEdit/ResidentsEdit';
+import RoomsContainer from './components/Rooms/RoomsContainer/RoomsContainer';
+import ResidentsContainer from './components/Residents/ResidentsContainer/ResidentsContainer';
+import ResidentsEdit from './components/Residents/ResidentsEdit/ResidentsEdit';
 
 export default () => (
   <div className="container">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import DateOfBirthInput from '../DateOfBirthInput';
+import DateOfBirthInput from '../../DateOfBirthInput';
 
 class ResidentsEdit extends Component {
   constructor(props) {
@@ -132,9 +132,9 @@ ResidentsEdit.defaultProps = {
   firstName: '',
   lastName: '',
   favouriteFood: '',
-  day: null,
-  month: null,
-  year: null,
+  day: '',
+  month: '',
+  year: '',
 };
 
 export default ResidentsEdit;

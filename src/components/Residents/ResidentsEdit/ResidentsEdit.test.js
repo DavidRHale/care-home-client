@@ -12,7 +12,7 @@ describe('Residents Edit', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<ResidentsEdit onSubmitResident={() => { }} rooms={[]} />);
+    component = shallow(<ResidentsEdit />);
   });
 
   it('renders without crashing', () => {

@@ -34,7 +34,7 @@ const renderYearOptions = () => {
   return options;
 };
 
-const DateOfBithInput = ({
+const DateOfBirthInput = ({
   day,
   month,
   year,
@@ -84,19 +84,19 @@ const DateOfBithInput = ({
     </div>
   );
 
-DateOfBithInput.propTypes = {
-  day: PropTypes.number,
-  month: PropTypes.number,
-  year: PropTypes.number,
+DateOfBirthInput.propTypes = {
+  day: PropTypes.string,
+  month: PropTypes.string,
+  year: PropTypes.string,
   onDayChange: PropTypes.func.isRequired,
   onMonthChange: PropTypes.func.isRequired,
   onYearChange: PropTypes.func.isRequired,
 };
 
-DateOfBithInput.defaultProps = {
-  day: 1,
-  month: 1,
-  year: 1950,
+DateOfBirthInput.defaultProps = {
+  day: '',
+  month: '',
+  year: '',
 };
 
-export default DateOfBithInput;
+export default DateOfBirthInput;
