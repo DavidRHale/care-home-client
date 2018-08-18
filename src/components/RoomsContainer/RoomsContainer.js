@@ -92,6 +92,7 @@ export default class RoomsContainer extends Component {
         />
       );
     }
+
     return <p>You don't seem to have any rooms yet. Add one to get started!</p>;
   }
 
@@ -108,10 +109,13 @@ export default class RoomsContainer extends Component {
           </div>
           <h2 className="col s1 header">Rooms</h2>
         </div>
+
         <div hidden={hideForm} className="row">
           <RoomsEdit submitRoom={this.addRoom} residents={residents} />
         </div>
+
         {this.renderRoomsList()}
+
       </div>
     );
   }
