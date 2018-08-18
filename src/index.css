@@ -37,3 +37,7 @@ nav .brand-logo {
   margin-top: 28px;
   margin-left: 50px;
 }
+
+.numSelect {
+  max-width: 100px;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import ResidentsCollection from '../ResidentsCollection/ResidentsCollection';
@@ -27,16 +28,22 @@ export default class ResidentsContainer extends Component {
     const { residents } = this.state;
     return residents.length > 0
       ? <ResidentsCollection residents={residents} />
-      : 'You don\'t seem to have any residents yet. Add one to get started!';
+      : <p>You don't seem to have any residents yet. Add one to get started!</p>;
   }
 
   render() {
     return (
       <div>
-        <div className="row">
-          <h2 className="col s8 offset-s2">Residents</h2>
-          <p>{this.renderResidentsList()}</p>
+        <div className="row valign-wrapper">
+          <div className="col offset-s1 offset-m2">
+            <Link to="/residents/new" className="btn">
+              + Add
+            </Link>
+          </div>
+          <h2 className="col s1 header">Residents</h2>
         </div>
+
+        {this.renderResidentsList()}
       </div>
     );
   }

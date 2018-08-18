@@ -8,7 +8,7 @@ import RoomsEdit from './RoomsEdit';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Rooms New', () => {
+describe('Rooms Edit', () => {
   let component;
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('Rooms New', () => {
     expect(component.exists()).toEqual(true);
   });
 
-  it('should have be a form', () => {
+  it('should be a form', () => {
     expect(component.type()).toEqual('form');
   });
 

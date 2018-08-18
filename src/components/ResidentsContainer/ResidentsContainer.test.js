@@ -19,7 +19,7 @@ describe('Residents Container', () => {
   ];
 
   beforeEach(() => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ data: residents }));
+    axios.get.mockImplementation(() => Promise.resolve({ data: residents }));
     component = shallow(<ResidentsContainer />);
   });
 
@@ -37,13 +37,18 @@ describe('Residents Container', () => {
     expect(header.text()).toEqual('Residents');
   });
 
+  it('should have a link to the add resident form', () => {
+    const link = component.find('link');
+    expect(link.exists()).toEqual(true);
+  });
+
   it('should render a residents collection when rooms are fetched', () => {
     const residentsCollection = component.find('ResidentsCollection');
     expect(residentsCollection.props().residents).toEqual(residents);
   });
 
   it('should render text when no residents are fetched', () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ data: [] }));
+    axios.get.mockImplementation(() => Promise.resolve({ data: [] }));
     component = shallow(<ResidentsContainer />);
 
     const residentsCollection = component.find('ResidentsCollection');
