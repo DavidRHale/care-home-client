@@ -13,6 +13,7 @@ export default class RoomsContainer extends Component {
     this.state = {
       rooms: [],
       residents: [],
+      hideForm: true,
     };
 
     this.submitRoom = this.submitRoom.bind(this);
@@ -56,19 +57,21 @@ export default class RoomsContainer extends Component {
   }
 
   render() {
-    const { residents } = this.state;
+    const { residents, hideForm } = this.state;
 
     return (
       <div>
         <div className="row valign-wrapper">
           <div className="col offset-s1 offset-m2">
-            <button className="btn" onClick={() => { }}>
+            <button className="btn" onClick={() => this.setState({ hideForm: !hideForm })}>
               + Add
             </button>
           </div>
           <h2 className="col s1 header">Rooms</h2>
         </div>
-        <RoomsNew submitRoom={this.submitRoom} residents={residents} />
+        <div hidden={hideForm}>
+          <RoomsNew submitRoom={this.submitRoom} residents={residents} />
+        </div>
         {this.renderRoomsList()}
       </div>
     );
