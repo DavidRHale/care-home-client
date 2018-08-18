@@ -19,7 +19,7 @@ describe('Rooms Container', () => {
   ];
 
   beforeEach(() => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ data: rooms }));
+    axios.get.mockImplementation(() => Promise.resolve({ data: rooms }));
     component = shallow(<RoomsContainer />);
   });
 
