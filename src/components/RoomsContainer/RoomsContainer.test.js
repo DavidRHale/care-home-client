@@ -55,7 +55,7 @@ describe('Rooms Container', () => {
   });
 
   it('should have a form to add a room', () => {
-    const form = component.find('RoomsNew');
+    const form = component.find('RoomsEdit');
     expect(form.exists()).toEqual(true);
   });
 });

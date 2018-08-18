@@ -4,7 +4,7 @@ import React from 'react';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import RoomsNew from './RoomsNew';
+import RoomsEdit from './RoomsEdit';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -12,15 +12,15 @@ describe('Rooms New', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<RoomsNew submitRoom={() => { }} />);
+    component = shallow(<RoomsEdit submitRoom={() => { }} residents={[]} />);
   });
 
   it('renders without crashing', () => {
     expect(component.exists()).toEqual(true);
   });
 
-  it('should have be a div', () => {
-    expect(component.type()).toEqual('div');
+  it('should have be a form', () => {
+    expect(component.type()).toEqual('form');
   });
 
   it('should have a form', () => {
@@ -54,12 +54,22 @@ describe('Rooms New', () => {
   it('should have a submit button', () => {
     const submitButton = component.find('button');
     expect(submitButton.exists()).toEqual(true);
-    expect(submitButton.text()).toEqual('Add Room');
+  });
+
+  it('should have submit button text for adding', () => {
+    const submitButton = component.find('button');
+    expect(submitButton.text()).toEqual('Add');
+  });
+
+  it('should have submit button text for editing when editing', () => {
+    component = shallow(<RoomsEdit submitRoom={() => { }} residents={[]} roomName="room 1" />);
+    const submitButton = component.find('button');
+    expect(submitButton.text()).toEqual('Update');
   });
 
   it('Should call the submitRoom function when clicked', () => {
     const submitMock = jest.fn();
-    component = mount(<RoomsNew submitRoom={submitMock} />);
+    component = mount(<RoomsEdit submitRoom={submitMock} residents={[]} />);
 
     expect(submitMock.mock.calls.length).toEqual(0);
     component.find('form').simulate('submit');

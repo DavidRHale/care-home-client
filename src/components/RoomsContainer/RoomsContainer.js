@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import RoomsList from '../RoomsList/RoomsList';
-import RoomsNew from '../RoomsNew/RoomsNew';
+import RoomsEdit from '../RoomsEdit/RoomsEdit';
 
 export default class RoomsContainer extends Component {
   constructor() {
@@ -17,7 +17,9 @@ export default class RoomsContainer extends Component {
       editIndex: undefined,
     };
 
-    this.submitRoom = this.submitRoom.bind(this);
+    this.addRoom = this.addRoom.bind(this);
+    this.editRoom = this.editRoom.bind(this);
+    this.deleteRoom = this.deleteRoom.bind(this);
   }
 
   componentDidMount() {
@@ -35,29 +37,58 @@ export default class RoomsContainer extends Component {
   fetchResidents() {
     axios
       .get('http://localhost:3001/residents')
-      .then(res => this.setState({ residents: res.data }))
+      .then(res => this.setState({
+        residents: res.data,
+        editIndex: -1,
+      }))
       .catch(() => { /* log or do something sensible */ });
   }
 
-  submitRoom(name, residentId) {
+  addRoom(name, residentId) {
     const { rooms } = this.state;
     const room = { name, resident_id: residentId };
 
     axios
       .post('http://localhost:3001/rooms', room)
-      .then(res => this.setState({ rooms: [...rooms, res.data] }))
+      .then(res => this.setState({
+        rooms: [...rooms, res.data],
+        hideForm: true,
+      }))
       .catch(err => console.log('err', err.response.data.message));
   }
 
+  editRoom(name, residentId, roomId) {
+    const room = { name, resident_id: residentId };
+
+    axios
+      .put(`http://localhost:3001/rooms/${roomId}`, room)
+      .then(() => this.fetchRooms())
+      .catch(err => console.log('err', err.response.data.message));
+
+    this.setState({ editIndex: -1 });
+  }
+
+  deleteRoom(roomId) {
+    axios
+      .delete(`http://localhost:3001/rooms/${roomId}`)
+      .then(() => this.fetchRooms())
+      .catch(err => console.log('err', err.response.data.message));
+
+    this.setState({ editIndex: -1 });
+  }
+
   renderRoomsList() {
-    const { rooms, editIndex } = this.state;
+    const { rooms, editIndex, residents } = this.state;
 
     if (rooms.length > 0) {
       return (
         <RoomsList
           rooms={rooms}
-          onEditClick={itemIndex => this.setState({ editIndex: itemIndex })}
+          residents={residents}
           editIndex={editIndex}
+          onEditClick={itemIndex => this.setState({ editIndex: itemIndex })}
+          onDeleteClick={this.deleteRoom}
+          submitRoom={this.editRoom}
         />
       );
     }
@@ -77,8 +108,8 @@ export default class RoomsContainer extends Component {
           </div>
           <h2 className="col s1 header">Rooms</h2>
         </div>
-        <div hidden={hideForm}>
-          <RoomsNew submitRoom={this.submitRoom} residents={residents} />
+        <div hidden={hideForm} className="row">
+          <RoomsEdit submitRoom={this.addRoom} residents={residents} />
         </div>
         {this.renderRoomsList()}
       </div>

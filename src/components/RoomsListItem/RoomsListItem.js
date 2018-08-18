@@ -12,10 +12,10 @@ const RoomsListItem = ({ room, itemIndex, onEditClick }) => {
   };
 
   return (
-    <li key={room.id} className="collection-item row valign-wrapper">
-      <div className="col s5 bold"><b>Room: {room.name}</b></div>
-      <div className="col s5">Resident: {residentName}</div>
-      <div className="col s2">
+    <li key={room.id} className="collection-item row">
+      <div className="col s12 m4 l5 bold"><b>Room: {room.name}</b></div>
+      <div className="col s12 m5 l5">Resident: {residentName}</div>
+      <div className="col s12 m3 l2">
         <button className="btn pink" onClick={onClick}>
           Edit
         </button>

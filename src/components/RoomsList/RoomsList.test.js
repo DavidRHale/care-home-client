@@ -20,9 +20,16 @@ describe('Rooms List', () => {
   ];
 
   beforeEach(() => {
-    component = shallow(<RoomsList rooms={rooms} onEditClick={() => { }} />);
+    component = shallow(
+      <RoomsList
+        rooms={rooms}
+        residents={[]}
+        onEditClick={() => { }}
+        onDeleteClick={() => { }}
+        submitRoom={() => { }}
+      />,
+    );
   });
-
 
   it('renders without crashing', () => {
     expect(component.exists()).toEqual(true);

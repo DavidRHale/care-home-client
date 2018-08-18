@@ -26,4 +26,14 @@ nav .brand-logo {
 
 .submit-button {
   margin-top: 27px;
+  width: 100px;
+  padding: 0px;
+}
+
+.delete-button {
+  border-radius: 100px;
+  padding: 2px 14px;
+  text-align: center;
+  margin-top: 28px;
+  margin-left: 50px;
 }
