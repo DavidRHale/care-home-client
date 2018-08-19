@@ -12,49 +12,49 @@ describe('Residents Edit', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<ResidentsEdit />);
+    component = shallow(<ResidentsEdit history={ {} } match={ {params: { id: 1 }} } />);
   });
 
-  it('renders without crashing', () => {
-    expect(component.exists()).toEqual(true);
-  });
+it('renders without crashing', () => {
+  expect(component.exists()).toEqual(true);
+});
 
-  it('should be a div', () => {
-    expect(component.type()).toEqual('div');
-  });
+it('should be a div', () => {
+  expect(component.type()).toEqual('div');
+});
 
-  it('should have a form', () => {
-    const form = component.find('form');
-    expect(form.exists()).toEqual(true);
-  });
+it('should have a form', () => {
+  const form = component.find('form');
+  expect(form.exists()).toEqual(true);
+});
 
-  it('should have a 3 text inputs', () => {
-    const textInputs = component.find('input');
-    expect(textInputs.length).toEqual(3);
-  });
+it('should have a 3 text inputs', () => {
+  const textInputs = component.find('input');
+  expect(textInputs.length).toEqual(3);
+});
 
-  it('should gave a label for first name', () => {
-    const label = component.find('label').first();
-    expect(label.exists()).toEqual(true);
-    expect(label.text()).toEqual('First Name:');
-  });
+it('should gave a label for first name', () => {
+  const label = component.find('label').first();
+  expect(label.exists()).toEqual(true);
+  expect(label.text()).toEqual('First Name:');
+});
 
-  it('should gave a label for last name', () => {
-    const label = component.find('label').at(1);
-    expect(label.exists()).toEqual(true);
-    expect(label.text()).toEqual('Last Name:');
-  });
+it('should gave a label for last name', () => {
+  const label = component.find('label').at(1);
+  expect(label.exists()).toEqual(true);
+  expect(label.text()).toEqual('Last Name:');
+});
 
-  it('should gave a label for favourite food', () => {
-    const label = component.find('label').at(2);
-    expect(label.exists()).toEqual(true);
-    expect(label.text()).toEqual('Favourite Food:');
-  });
+it('should gave a label for favourite food', () => {
+  const label = component.find('label').at(2);
+  expect(label.exists()).toEqual(true);
+  expect(label.text()).toEqual('Favourite Food:');
+});
 
-  it('should have a date input element', () => {
-    const dob = component.find('DateOfBirthInput');
-    expect(dob.exists()).toEqual(true);
-  });
+it('should have a date input element', () => {
+  const dob = component.find('DateOfBirthInput');
+  expect(dob.exists()).toEqual(true);
+});
 
   // it('should gave a label for residents dropdown', () => {
   //   const label = component.find('label').at(1);

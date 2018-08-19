@@ -16,7 +16,7 @@ describe('Rooms List', () => {
   ];
 
   beforeEach(() => {
-    component = shallow(<ResidentsCollection residents={residents} />);
+    component = shallow(<ResidentsCollection residents={residents} onDeleteClick={() => {}}/>);
   });
 
 
