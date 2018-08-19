@@ -6,10 +6,11 @@ import PropTypes from 'prop-types';
 class RoomsEdit extends Component {
   constructor(props) {
     super(props);
+    const { roomName, residentId } = props;
 
     this.state = {
-      roomName: props.roomName,
-      residentId: props.residentId,
+      roomName,
+      residentId: residentId > 0 ? residentId : '',
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -101,8 +102,8 @@ RoomsEdit.propTypes = {
 
 RoomsEdit.defaultProps = {
   roomName: '',
-  residentId: undefined,
-  roomId: undefined,
+  residentId: -1,
+  roomId: -1,
 };
 
 export default RoomsEdit;

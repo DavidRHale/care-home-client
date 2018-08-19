@@ -1,3 +1,7 @@
+/* eslint react/forbid-prop-types: 0 */
+/* eslint react/destructuring-assignment: 0 */
+/* eslint object-curly-newline: 0 */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -34,6 +38,7 @@ class ResidentsEdit extends Component {
 
   onSubmit(event) {
     event.preventDefault();
+    const { history } = this.props;
     const { residentId, firstName, lastName, favouriteFood, day, month, year } = this.state;
 
     const resident = {
@@ -46,13 +51,13 @@ class ResidentsEdit extends Component {
     if (residentId) {
       axios
         .put(`http://localhost:3001/residents/${residentId}`, resident)
-        .then(res => console.log('added', res.data))
-        .catch(err => console.log('err', err.response.data.message));
+        .then(() => history.push('/residents'))
+        .catch(() => { /* log or do something sensible */ });
     } else {
       axios
         .post('http://localhost:3001/residents', resident)
-        .then(res => console.log('added', res.data))
-        .catch(err => console.log('err', err.response.data.message));
+        .then(() => history.push('/residents'))
+        .catch(() => { /* log or do something sensible */ });
     }
   }
 
@@ -163,6 +168,8 @@ ResidentsEdit.propTypes = {
   day: PropTypes.string,
   month: PropTypes.string,
   year: PropTypes.string,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 ResidentsEdit.defaultProps = {

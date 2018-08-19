@@ -17,6 +17,7 @@ const RoomsList = ({
       return (
         <RoomsListItemEdit
           room={room}
+          key={room.id}
           residents={residents}
           submitRoom={submitRoom}
           onDeleteClick={onDeleteClick}
