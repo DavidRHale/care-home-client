@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const renderDayOptions = () => {
   const options = [];
   for (let i = 1; i <= 31; i++) {
-    const formatted = i < 10 ? '0' + i : i.toString();
+    const formatted = i < 10 ? `0${i}` : i.toString();
     options.push(
-      <option value={formatted} key={formatted}>{formatted}</option>
+      <option value={formatted} key={formatted}>{formatted}</option>,
     );
   }
   return options;
@@ -15,9 +15,9 @@ const renderDayOptions = () => {
 const renderMonthOptions = () => {
   const options = [];
   for (let i = 1; i <= 12; i++) {
-    const formatted = i < 10 ? '0' + i : i.toString();
+    const formatted = i < 10 ? `0${i}` : i.toString();
     options.push(
-      <option value={formatted} key={formatted}>{formatted}</option>
+      <option value={formatted} key={formatted}>{formatted}</option>,
     );
   }
   return options;
@@ -28,7 +28,7 @@ const renderYearOptions = () => {
   const options = [];
   for (let i = currentYear; i >= 1900; i--) {
     options.push(
-      <option value={i} key={i}>{i}</option>
+      <option value={i} key={i}>{i}</option>,
     );
   }
   return options;
@@ -53,7 +53,7 @@ const DateOfBirthInput = ({
           className="browser-default"
           onChange={onDayChange}
         >
-          <option value="">None</option>
+          <option disabled value="">Select...</option>
           {renderDayOptions()}
         </select>
       </div>
@@ -65,7 +65,7 @@ const DateOfBirthInput = ({
           className="browser-default"
           onChange={onMonthChange}
         >
-          <option value="">None</option>
+          <option disabled value="">Select...</option>
           {renderMonthOptions()}
         </select>
       </div>
@@ -77,7 +77,7 @@ const DateOfBirthInput = ({
           className="browser-default"
           onChange={onYearChange}
         >
-          <option value="">None</option>
+          <option disabled value="">Select...</option>
           {renderYearOptions()}
         </select>
       </div>
