@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
@@ -12,6 +13,11 @@ const renderResidents = residents => (
           <p>Room: {resident.room}</p>
           <p>DOB: {moment(resident.dob).format('DD/MM/YYYY')}</p>
           <p>Favourite Food: {resident.favourite_food}</p>
+        </div>
+        <div className="card-action">
+          <Link to={`/residents/${resident.id}/edit`}>
+            Edit
+          </Link>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default () => (
         <Route exact path="/rooms" component={RoomsContainer} />
         <Route exact path="/residents" component={ResidentsContainer} />
         <Route exact path="/residents/new" component={ResidentsEdit} />
-        <Route exact path="/residents/edit" component={ResidentsEdit} />
+        <Route exact path="/residents/:id/edit" component={props => <ResidentsEdit {...props} />} />
       </div>
     </BrowserRouter>
   </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import moment from 'moment';
 
 import DateOfBirthInput from '../../DateOfBirthInput';
 
@@ -15,14 +16,25 @@ class ResidentsEdit extends Component {
       day: props.day,
       month: props.month,
       year: props.year,
+      residentId: '',
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.fetchResident = this.fetchResident.bind(this);
+  }
+
+  componentDidMount() {
+    const residentId = this.props.match.params.id;
+
+    if (residentId) {
+      this.fetchResident(residentId);
+      this.setState({ residentId });
+    }
   }
 
   onSubmit(event) {
     event.preventDefault();
-    const { firstName, lastName, favouriteFood, day, month, year } = this.state;
+    const { residentId, firstName, lastName, favouriteFood, day, month, year } = this.state;
 
     const resident = {
       first_name: firstName,
@@ -31,10 +43,35 @@ class ResidentsEdit extends Component {
       dob: `${year}-${month}-${day}`,
     };
 
+    if (residentId) {
+      axios
+        .put(`http://localhost:3001/residents/${residentId}`, resident)
+        .then(res => console.log('added', res.data))
+        .catch(err => console.log('err', err.response.data.message));
+    } else {
+      axios
+        .post('http://localhost:3001/residents', resident)
+        .then(res => console.log('added', res.data))
+        .catch(err => console.log('err', err.response.data.message));
+    }
+  }
+
+  fetchResident(residentId) {
     axios
-      .post('http://localhost:3001/residents', resident)
-      .then(res => console.log('added', res.data))
-      .catch(err => console.log('err', err.response.data.message));
+      .get(`http://localhost:3001/residents/${residentId}`)
+      .then((res) => {
+        const dob = moment(res.data.dob);
+
+        this.setState({
+          firstName: res.data.first_name,
+          lastName: res.data.last_name,
+          favouriteFood: res.data.favourite_food,
+          day: dob.format('DD'),
+          month: dob.format('MM'),
+          year: dob.format('YYYY'),
+        });
+      })
+      .catch(() => { /* log or do something sensible */ });
   }
 
   render() {
