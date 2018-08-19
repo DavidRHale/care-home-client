@@ -45,13 +45,11 @@ export default class ResidentsContainer extends Component {
   render() {
     return (
       <div>
-        <div className="row valign-wrapper">
-          <div className="col offset-s1 offset-m2">
-            <Link to="/residents/new" className="btn pink lighten-3">
-              + Add
-            </Link>
-          </div>
-          <h2 className="col s1 header">Residents</h2>
+        <div className="row">
+          <h2 className="col offset-s1 s10 offset-m1 m2 offset-l3 l1 header">Residents</h2>
+          <Link to="/residents/new" className="col offset-s2 s3 offset-m3 m2 add-button btn pink lighten-3">
+            + Add
+          </Link>
         </div>
 
         {this.renderResidentsList()}

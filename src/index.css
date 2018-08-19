@@ -5,11 +5,8 @@ body {
 }
 
 nav .brand-logo {
-  padding-left: 10px;
-}
-
-.header {
-  margin-left: 0 !important;
+  margin-left: 10px;
+  font-size: 2rem;
 }
 
 .card {
@@ -32,6 +29,12 @@ nav .brand-logo {
   text-align: center;
   margin-top: 28px;
   margin-left: 50px;
+}
+
+.add-button {
+  position: relative;
+  margin-top: 40px;
+  max-width: 200px;
 }
 
 .numSelect {
