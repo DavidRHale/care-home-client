@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 const renderResidents = residents => (
   residents.map(resident => (
@@ -9,7 +10,7 @@ const renderResidents = residents => (
           <span className="card-title">{resident.first_name} {resident.last_name}</span>
           <hr />
           <p>Room: {resident.room}</p>
-          <p>DOB: {resident.dob}</p>
+          <p>DOB: {moment(resident.dob).format('DD/MM/YYYY')}</p>
           <p>Favourite Food: {resident.favourite_food}</p>
         </div>
       </div>
