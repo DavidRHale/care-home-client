@@ -11,6 +11,8 @@ export default class ResidentsContainer extends Component {
     this.state = {
       residents: [],
     };
+
+    this.deleteResident = this.deleteResident.bind(this);
   }
 
   componentDidMount() {
@@ -24,10 +26,17 @@ export default class ResidentsContainer extends Component {
       .catch(() => { /* log or do something sensible */ });
   }
 
+  deleteResident(residentId) {
+    axios
+      .delete(`http://localhost:3001/residents/${residentId}`)
+      .then(() => this.fetchResidents())
+      .catch(() => { /* log or do something sensible */ });
+  }
+
   renderResidentsList() {
     const { residents } = this.state;
     return residents.length > 0
-      ? <ResidentsCollection residents={residents} />
+      ? <ResidentsCollection residents={residents} onDeleteClick={this.deleteResident} />
       : <p>You don't seem to have any residents yet. Add one to get started!</p>;
   }
 
