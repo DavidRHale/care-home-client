@@ -103,7 +103,7 @@ export default class RoomsContainer extends Component {
       <div>
         <div className="row valign-wrapper">
           <div className="col offset-s1 offset-m2">
-            <button className="btn" onClick={() => this.setState({ hideForm: !hideForm })}>
+            <button className="btn pink lighten-3" onClick={() => this.setState({ hideForm: !hideForm })}>
               + Add
             </button>
           </div>

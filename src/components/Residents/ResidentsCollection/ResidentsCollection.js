@@ -6,7 +6,7 @@ import moment from 'moment';
 const ResidentsCollection = ({ residents, onDeleteClick }) => {
   const renderResidents = () => (
     residents.map(resident => (
-      <div className="col s12 m4 offset-m2 l5 offset-l1" key={resident.id}>
+      <div className="col s12 m6 l5 offset-l1" key={resident.id}>
         <div className="card hoverable">
           <div className="card-content">
             <span className="card-title">{resident.first_name} {resident.last_name}</span>
@@ -16,11 +16,11 @@ const ResidentsCollection = ({ residents, onDeleteClick }) => {
             <p>Favourite Food: {resident.favourite_food}</p>
           </div>
           <div className="card-action valign-wrapper">
-            <Link to={`/residents/${resident.id}/edit`}>
+            <Link to={`/residents/${resident.id}/edit`} className="btn pink lighten-3">
               Edit
             </Link>
             <button
-              className="btn red"
+              className="btn red lighten-1"
               onClick={(event) => {
                 event.preventDefault();
                 onDeleteClick(resident.id);

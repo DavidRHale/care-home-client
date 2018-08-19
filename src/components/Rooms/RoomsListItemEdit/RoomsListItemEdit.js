@@ -21,14 +21,14 @@ const RoomsListItemEdit = ({
       </div>
       <div className="col s12 m2">
         <button
-          className="btn delete-button red"
+          className="btn delete-button red lighten-1"
           onClick={(event) => {
             event.preventDefault();
             onDeleteClick(room.id);
           }}
         >
           X
-      </button>
+        </button>
       </div>
     </li>
   );

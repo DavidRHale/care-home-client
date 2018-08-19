@@ -16,7 +16,7 @@ const RoomsListItem = ({ room, itemIndex, onEditClick }) => {
       <div className="col s12 m4 l5 bold"><b>Room: {room.name}</b></div>
       <div className="col s12 m5 l5">Resident: {residentName}</div>
       <div className="col s12 m3 l2">
-        <button className="btn pink" onClick={onClick}>
+        <button className="btn pink lighten-3" onClick={onClick}>
           Edit
         </button>
       </div>

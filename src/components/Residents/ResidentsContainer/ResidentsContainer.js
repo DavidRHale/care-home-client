@@ -47,7 +47,7 @@ export default class ResidentsContainer extends Component {
       <div>
         <div className="row valign-wrapper">
           <div className="col offset-s1 offset-m2">
-            <Link to="/residents/new" className="btn">
+            <Link to="/residents/new" className="btn pink lighten-3">
               + Add
             </Link>
           </div>

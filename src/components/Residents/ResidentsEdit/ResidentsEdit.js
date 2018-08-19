@@ -151,7 +151,7 @@ class ResidentsEdit extends Component {
           </div>
 
           <div className="col s12 m2">
-            <button className="btn pink" onClick={this.onSubmit}>
+            <button className="btn pink lighten-3" onClick={this.onSubmit}>
               Save
             </button>
           </div>

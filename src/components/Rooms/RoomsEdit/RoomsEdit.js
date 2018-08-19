@@ -75,7 +75,7 @@ class RoomsEdit extends Component {
         </div>
 
         <div className="col s12 m2">
-          <button className="submit-button btn pink" onClick={this.onSubmit}>
+          <button className="submit-button btn pink lighten-3" onClick={this.onSubmit}>
             {this.props.roomName ? 'Update' : 'Add'}
           </button>
         </div>
